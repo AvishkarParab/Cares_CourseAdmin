@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 .App {
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .App-logo {
@@ -35,4 +37,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navbar{
+  background: linear-gradient(rgba(5, 56, 132, 0.932),rgba(6, 86, 205, 0.937),rgba(6, 67, 249, 0.866));
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  color: white !important;
+}
+.linkItem{
+  text-decoration: none;
+  /* margin: 0px 15px; */
+  color: white;
+  font-size: 17px;
+  padding: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.is-active{
+  color: rgb(230, 245, 243);
+  border-bottom: 1.7px solid rgb(230, 235, 231);
+  text-decoration: none;
+  font-size: 17px;
+  padding: 5px;
+}
+.linkItem:hover,.is-active:hover{
+  transition: .2s all ease-in-out;
+  font-weight: 500;
+  color: rgb(242, 243, 253);
+
+}
+.logoutbtn{
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 6px 7px 2px 3px rgba(75, 75, 75, 0.252);
+  color: rgb(14, 56, 247);
+}
+.logoutbtn:hover{
+  background: transparent;
+  transition: .2s all ease-in-out;
+  color: white;
+  border: 1px solid rgba(33, 33, 33, 0.304);
+}
+
+/* login Page css */
+.loginForm{
+  font-family: 'Poppins', sans-serif;
+
 }
