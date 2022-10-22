@@ -71,7 +71,7 @@ async function deleteCourse(id){
 
                 {(!courses)?
                     <tr>
-                        <td>NO RESULTS FOUND</td>
+                        <td colSpan={10}>NO RESULTS FOUND</td>
                     </tr>
                     :
                     courses.map((elem)=>{
@@ -79,7 +79,10 @@ async function deleteCourse(id){
                         <tr key={elem.id}>
                         <td>{elem.id}</td>
                         <td>{elem.cname}</td>
-                        <td>{elem.tot_module}</td>
+                        <td style={{"cursor":"pointer","color":"blue"}}
+                        onClick={()=>{navigate("/module",{state:{cid:elem.id}})}}>
+                        <strong>{elem.tot_module}</strong>
+                        </td>
                         <td className='d-flex justify-content-center align-items-center'> 
                             <Button className='btn' variant="" type="button"
                                 onClick={()=>{navigate("/editcourse",{state:{course:elem}})}}>

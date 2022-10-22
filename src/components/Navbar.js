@@ -16,7 +16,7 @@ const NavbarPro = () => {
               <NavLink to="/course"> 
                 <Nav.Item className="linkItem">Course</Nav.Item>
               </NavLink>
-              <NavLink to="/course"> 
+              <NavLink to="/addmodule"> 
                 <Nav.Item className="linkItem">Module</Nav.Item>
               </NavLink>
             </Nav>
