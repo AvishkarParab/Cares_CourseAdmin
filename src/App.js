@@ -8,6 +8,7 @@ import AddCourse from './components/AddCourse';
 import EditCourse from './components/EditCourse';
 import AddCourseModule from './components/AddCourseModule';
 import Module from './components/Module';
+import Register from './components/Register';
 
 
 
@@ -15,6 +16,7 @@ function App() {
   return <BrowserRouter>
      <Routes>
       <Route path="/" element= {<Login/>} />
+      <Route path="/register" element= {<Register/>} />
       <Route path="/home" element= {<Home/>} />
       <Route path="/course" element= {<Course/>} />
       <Route path="/addcourse" element= {<AddCourse/>} />
