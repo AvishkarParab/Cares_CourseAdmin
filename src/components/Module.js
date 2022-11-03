@@ -13,7 +13,7 @@ const [modules,setModules] = useState([]);
 useEffect(() => {
     const getmodule = async()=>{
         try {
-            var response = await axios.get(`/module/?cid=${location.state.cid}`);
+            var response = await axios.get(`https://bot.creativeknox.com/module/?cid=${location.state.cid}`);
             console.log(response.data.result);
             setModules(response.data.result)
 
