@@ -16,7 +16,7 @@ const [isDelete,setIsDelete] = useState(0)
 useEffect(() => {
     const getcourse = async()=>{
         try {
-            var response = await axios.get("/course");
+            var response = await axios.get("https://bot.creativeknox.com/course");
             console.log(response.data.result);
             setCourses(response.data.result)
 
