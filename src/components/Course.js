@@ -31,7 +31,7 @@ useEffect(() => {
 
 async function deleteCourse(id){
     try {
-        var response = await axios.delete(`/course/?id=${id}`);
+        var response = await axios.delete(`https://bot.creativeknox.com/course/?id=${id}`);
         if(response.data.result)
             setIsDelete(1)
             // navigate("/course");

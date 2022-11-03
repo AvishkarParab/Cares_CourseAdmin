@@ -18,7 +18,7 @@ const AddCourse = () => {
   
   async function updateCourse(){
       try {
-        var response = await axios.put("/course/update",{
+        var response = await axios.put("https://bot.creativeknox.com/course/update",{
           id:location.state.course.id,
           cname:coursedata.name,
           module:coursedata.module

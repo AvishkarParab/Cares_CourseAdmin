@@ -5,23 +5,33 @@ import Navbar from "./Navbar";
 import Container from "react-bootstrap/Container";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+var FormData = require('form-data');
 
 const AddCourseModule = () => {
   var location = useLocation();
   var navigate = useNavigate();
 
+  // const saveFile = (e) => {
+  //   setModuleData({...moduledata,"file":e.target.files[0]});
+  //   setModuleData({...moduledata,"filename":e.target.files[0].name});
+  //   console.log(e.target.files[0]);
+  // };
+
+
   const [mtype, setMtype] = useState("none");
   const [sno, setSno] = useState("");
   const [moduledata, setModuleData] = useState({
     mtype: "",
+    imagelink:"",
     vidlink: "",
-    imgfile: "",
     quest: "",
     opt1:'',
     opt2:'',
     opt3:'',
     opt4:'',
     coropt: "",
+    file:"",
+    filename:""
   });
 
   const checkMtype = (e) => {
@@ -33,18 +43,51 @@ const AddCourseModule = () => {
   };
 
   const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append("cid", location.state.cid);
+    formData.append("mtype", moduledata.mtype);
+    formData.append("vidlink", moduledata.vidlink);
+    formData.append("quest", moduledata.quest);
+    formData.append("opt1", moduledata.opt1);
+    formData.append("opt2", moduledata.opt2);
+    formData.append("opt3", moduledata.opt3);
+    formData.append("opt4", moduledata.opt4);
+    formData.append("coropt", moduledata.coropt);
+    formData.append("file", moduledata.file);
+    formData.append("fileName", moduledata.filename);
+
+    let dataObt = {
+      cid:location.state.cid,
+      mtype:moduledata.mtype,
+      vidlink:moduledata.vidlink,
+      quest:moduledata.quest,
+      opt1:moduledata.opt1,
+      opt2:moduledata.opt2,
+      opt3:moduledata.opt3,
+      opt4:moduledata.opt4,
+      coropt:moduledata.coropt,
+      file:moduledata.file,
+      fileName:moduledata.filename,
+    }
+   // Display the values
+// for (const value of formData.values()) {
+//   console.log(value);
+// }
+console.log(dataObt);
     try {
-      var response = await axios.post("/module/add", {
-        cid: location.state.cid,
-        mtype: moduledata.mtype,
-        vidlink: moduledata.vidlink,
-        image: moduledata.imgfile,
-        quest: moduledata.quest,
-        opt1: moduledata.opt1,
-        opt2: moduledata.opt2,
-        opt3: moduledata.opt3,
-        opt4: moduledata.opt4,
-        coropt: moduledata.coropt,
+      var response = await axios.post("https://bot.creativeknox.com/module/add", {
+        cid:location.state.cid,
+        mtype:moduledata.mtype,
+        imagelink:moduledata.imagelink,
+        vidlink:moduledata.vidlink,
+        quest:moduledata.quest,
+        opt1:moduledata.opt1,
+        opt2:moduledata.opt2,
+        opt3:moduledata.opt3,
+        opt4:moduledata.opt4,
+        coropt:moduledata.coropt,
+        file:moduledata.file,
+        fileName:moduledata.filename,
       });
       console.log(response.data.result);
       navigate("/course");
@@ -59,16 +102,16 @@ const AddCourseModule = () => {
       <Container className="mt-3">
         <h4 className="text-center mt-3">ADD COURSE MODULE</h4>
         <br />
-        <Form>
+        <Form id="form">
           <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Label>Select Module Type</Form.Label>
             <Form.Select
               aria-label="Default select example"
+              defaultValue="none"
               onChange={(e) => {
                 checkMtype(e);
               }}
             >
-              <option> Please Select </option>
               <option value="none">None</option>
               <option value="video">Video</option>
               <option value="image">Image</option>
@@ -89,17 +132,21 @@ const AddCourseModule = () => {
           ) : (
             ""
           )}
-          {mtype === "image" ? (
+          {
+            mtype === "image" ? 
             <Form.Group className="mb-3" controlId="formBasicText">
-              <Form.Label>Upload Image :</Form.Label>
+              <Form.Label>Enter Image Link</Form.Label>
               <Form.Control
-                type="file"
-                placeholder="Display name for coressponding keyword"
+                type="text"
+                placeholder="Paste your link here"
+                onChange={(e) => {
+                  setModuleData({ ...moduledata, imagelink: e.target.value });
+                }}
+                value={moduledata.imagelink}
               />
             </Form.Group>
-          ) : (
-            ""
-          )}
+          :""
+          }
           <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Label>Enter Your Question</Form.Label>
             <Form.Control

@@ -15,7 +15,7 @@ const [userData,setUserData] = useState({
 
 const checkUser = async ()=>{
   try {
-    var response = await axios.post("/admin/login",{
+    var response = await axios.post("https://bot.creativeknox.com/admin/login",{
       phone:userData.phone,
       password:userData.password
   });

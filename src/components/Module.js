@@ -66,7 +66,12 @@ useEffect(() => {
                             onClick={()=>{window.open(elem.videolink)}}>
                             {elem.videolink}
                         </td>
-                        <td>{elem.image}</td>
+                        <td
+                            style={{"cursor":"pointer","color":"blue"}}
+                            >
+                            {/* {elem.image}  */}
+                            <a href="https://play-lh.googleusercontent.com/KtFwMsqVzBBpTFc8vR5SZRCNBvqknlWurnzTRl4J-2kdZhoM04LjklX9Vh8pl-fYfpU" target="_blank" rel="noopener noreferrer">Yes me</a>
+                        </td>
                         <td>{elem.question}</td>
                         <td>{elem.option1}</td>
                         <td>{elem.option2}</td>

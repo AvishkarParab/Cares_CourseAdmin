@@ -15,7 +15,7 @@ const [userData,setUserData] = useState({
 
 const checkUser = async ()=>{
   try {
-    var response = await axios.post("/admin/register",{
+    var response = await axios.post("https://bot.creativeknox.com/admin/register",{
       name:userData.name,
       email:userData.email,
       phone:userData.phone,

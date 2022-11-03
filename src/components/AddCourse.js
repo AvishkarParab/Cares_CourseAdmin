@@ -16,7 +16,7 @@ const AddCourse = () => {
 
   async function addCourse() {
     try {
-      var response = await axios.post("/course/add", {
+      var response = await axios.post("https://bot.creativeknox.com/course/add", {
         cname: coursedata.name,
         module: coursedata.module,
       });
